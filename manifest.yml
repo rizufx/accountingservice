@@ -3,4 +3,4 @@ applications:
 - name: inspro-accounting
   memory: 512M
   host: cfapps.io
-  path: target/gs-spring-boot-0.1.0.jar
+  path: target/accountingservice-0.0.1-SNAPSHOT.jar
