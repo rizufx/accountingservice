@@ -1,6 +1,11 @@
 package com.inspro.accountingservice;
 
+import java.util.Calendar;
 import java.util.concurrent.atomic.AtomicLong;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.core.Response;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountingController {
 	 private static final String template = "Welcome, %s!";
-	    private final AtomicLong counter = new AtomicLong();
+	 private final AtomicLong counter = new AtomicLong();
 
 	 @RequestMapping("/accounting")
-	    public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-	        return new Greeting(counter.incrementAndGet(),
-	                String.format(template, name));
+	 @POST
+	 @Consumes("application/json")
+	 public Response accountingRequest(@RequestParam(value="ledgerEntry") String ledgerEntry) {
+	     System.out.println(Calendar.getInstance().getTime()+" "+ledgerEntry);   
+		 return Response.status(201).build();
 	    }
 	
 	
