@@ -21,7 +21,7 @@ public class AccountingController {
 	 @Consumes("application/json")
 	 public Response accountingRequest(@RequestParam(value="ledgerEntry") String ledgerEntry) {
 	     System.out.println(Calendar.getInstance().getTime()+" "+ledgerEntry);   
-		 return Response.status(201).build();
+		 return Response.status(201).entity("successfully recieved the ledger entry: "+ledgerEntry).build();
 	    }
 	
 	
